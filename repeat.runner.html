@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Jasmine Spec Runner: repeat</title>
+
+        <link rel="shortcut icon" type="image/png" href="/Users/rauschma/local/jasmine/images/jasmine_favicon.png">
+        <link href="/Users/rauschma/local/jasmine/lib/jasmine-core/jasmine.css" rel="stylesheet"/>
+    
+        <!-- Jasmine files -->
+        <script type="text/javascript" src="/Users/rauschma/local/jasmine/lib/jasmine-core/jasmine.js"></script>
+        <script type="text/javascript" src="/Users/rauschma/local/jasmine/src/html/TrivialReporter.js"></script>
+    
+        <!-- CUSTOMIZE: The code to be tested and the tests -->
+        <script type="text/javascript" src="repeat.js"></script>
+        <script>
+            function require() {
+                // do nothing, allows repeat.spec.js to require a node module
+            }
+        </script>
+        <script type="text/javascript" src="repeat.spec.js"></script>
+
+        <script type="text/javascript">
+            (function() {
+                var jasmineEnv = jasmine.getEnv();
+                jasmineEnv.updateInterval = 1000;
+
+                var trivialReporter = new jasmine.TrivialReporter();
+                jasmineEnv.addReporter(trivialReporter);
+
+                jasmineEnv.specFilter = function(spec) {
+                    return trivialReporter.specFilter(spec);
+                };
+
+                var currentWindowOnload = window.onload;
+                window.onload = function() {
+                    if (currentWindowOnload) {
+                        currentWindowOnload();
+                    }
+                    jasmineEnv.execute();
+                };
+            })();
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
